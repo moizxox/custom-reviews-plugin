@@ -12,7 +12,7 @@ function cr_get_review_stats() {
 
     $ratings = [];
     foreach ($query->posts as $p) {
-        $ratings[] = (int) get_post_meta($p->ID, 'cr_rating', true);
+        $ratings[] = (int) get_post_meta($p->ID, 'review_count', true);
     }
 
     $total = count($ratings);

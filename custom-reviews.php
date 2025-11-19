@@ -25,8 +25,14 @@ add_action('wp_enqueue_scripts', function() {
     wp_enqueue_script(
         'cr-form-handler',
         CR_URL . 'assets/js/form-handler.js',
-        ['jquery'],
-        false,
+        [],
+        '1.0.0',
         true
+    );
+    wp_enqueue_style(
+        'cr-style',
+        CR_URL . 'assets/css/style.css',
+        [],
+        '1.0.0'
     );
 });

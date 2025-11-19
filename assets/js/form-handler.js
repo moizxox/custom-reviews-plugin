@@ -4,32 +4,39 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // console.log('form found');
+
         e.preventDefault();
+
 
         let form = e.target;
 
+        
         let data = {
-            rating: form.querySelector('#cr_rating').value,
-            author: form.querySelector('#cr_author').value,
-            review: form.querySelector('#cr_review').value
+            rating: form.querySelector('input[name="form_fields[cr_rating]"]').value,
+            author: form.querySelector('input[name="form_fields[cr_author]"]').value,
+            review: form.querySelector('textarea[name="form_fields[cr_review]"]').value
         };
 
-        fetch('/wp-json/cr/v1/add-review', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(data)
-        })
-        .then(function(response) {
-            if (response.ok) {
-                alert('Review submitted!');
-                form.reset();
-                window.location.reload();
-            }
-        })
-        .catch(function(error) {
-            console.error('Error:', error);
-        });
+        console.log('form submitted', data);
+
+
+        // fetch('/don-williams/wp-json/cr/v1/add-review', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: new URLSearchParams(data)
+        // })
+        // .then(function(response) {
+        //     if (response.ok) {
+        //         alert('Review submitted!');
+        //         form.reset();
+        //         window.location.reload();
+        //     }
+        // })
+        // .catch(function(error) {
+        //     console.error('Error:', error);
+        // });
     });
-});
+})

@@ -1,0 +1,5 @@
+.cr-form form{
+    .elementor-message{
+        display: none;
+    }
+}

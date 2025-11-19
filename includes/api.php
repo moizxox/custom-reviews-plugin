@@ -16,11 +16,11 @@ function cr_create_review($req) {
     $post_id = wp_insert_post([
         'post_type'   => 'cr_review',
         'post_status' => 'publish',
-        'post_title'  => $author . ' Review',
+        'post_title'  => $author,
         'post_content'=> $review
     ]);
 
-    update_post_meta($post_id, 'cr_rating', $rating);
+    update_post_meta($post_id, 'review_count', $rating);
 
     return ['success' => true];
 }
