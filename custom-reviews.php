@@ -17,7 +17,7 @@ require_once CR_PATH . 'includes/cpt.php';
 require_once CR_PATH . 'includes/api.php';
 require_once CR_PATH . 'includes/shortcode.php';
 require_once CR_PATH . 'includes/helpers.php';
-
+require_once CR_PATH . 'includes/admin/instructions.php';
 
 add_action('rest_api_init', 'cr_register_api_routes');
 
