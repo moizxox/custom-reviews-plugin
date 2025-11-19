@@ -18,7 +18,7 @@ require_once CR_PATH . 'includes/api.php';
 require_once CR_PATH . 'includes/shortcode.php';
 require_once CR_PATH . 'includes/helpers.php';
 
-add_action('init', 'cr_register_cpt');
+
 add_action('rest_api_init', 'cr_register_api_routes');
 
 add_action('wp_enqueue_scripts', function() {
