@@ -1,23 +1,35 @@
-jQuery(function($) {
-    $(document).on('submit', '.cr-form', function(e) {
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('submit', function(e) {
+        if (!e.target.matches('.cr-form form')) {
+            return;
+        }
+
         e.preventDefault();
 
-        let form = $(this);
+        let form = e.target;
 
         let data = {
-            rating: form.find('[name="rating"]').val(),
-            author: form.find('[name="author"]').val(),
-            review: form.find('[name="review"]').val()
+            rating: form.querySelector('#cr_rating').value,
+            author: form.querySelector('#cr_author').value,
+            review: form.querySelector('#cr_review').value
         };
 
-        $.ajax({
-            url: '/wp-json/cr/v1/add-review',
+        fetch('/wp-json/cr/v1/add-review', {
             method: 'POST',
-            data: data,
-            success: function() {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(data)
+        })
+        .then(function(response) {
+            if (response.ok) {
                 alert('Review submitted!');
-                form.trigger('reset');
+                form.reset();
+                window.location.reload();
             }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
         });
     });
 });
